@@ -1,4 +1,4 @@
-# 16s analysis with QIIME2 and Visualization with R
+# 16s analysis with QIIME2 and some visualizations with R
 
 Our fastq files are _paired-end_, _demultiplexed_ and have the type _PairedEndManifestPhred33V2_. Your fastq files can have **any** format, just change the 
 correspondig parameters at the input process. 

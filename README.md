@@ -47,6 +47,8 @@ The **steps** for our analysis are:
 
 For more informations dive into code (_qiime2_commands.sh_) and **don't forget to read my comments (They are pretty helpful :) )**
 
+After finishing with qiime, check _visualizations_R.md_ for some cool visualizations by playing with R.
+
 
 
 

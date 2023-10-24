@@ -2,23 +2,27 @@
 # a second column with the path in our PC that contains forward reads and a third column containing the path for reverse reads  
 
 #Import raw files into qiime, please check the format of manifest_data.txt
+#Depending on your own data you can change the sempantic type and/or the format of your files
 qiime tools import \
 --type 'SampleData[PairedEndSequencesWithQuality]' \ #Semantic type 
 --input-path manifest_data.txt\ #Data directory
 --input-format PairedEndFastqManifestPhred33V2 \ #Format of files
 --output-path demux-paired-end.qza #Name for output file
 
-# My moto is: visualize, visualize, visualize. So let's... visualize our input data in order to be sure that the import part is correct 
+#My moto is: visualize, visualize, visualize. So let's... visualize our input data in order to be sure that the import part is correct, but also to make some decisions for the future
 qiime demux summarize \
 --i-data paired-end-demux.qza \ #Input file
 --o-visualization paired-end-demux.qzv #Output file
 
-#!Important! To be able to see paired-end-demux.qzv just drop this file here -> https://view.qiime2.org/
+#!Important! To be able to see paired-end-demux.qzv just drop that file here -> https://view.qiime2.org/
 
 
 ####################################################DADA2 TOOL###########################################################
 
-# DADA2 tool, depending on your data, choose your own lengths to trim and truncate
+#DADA2 tool, depending on your data, choose your own lengths to trim and truncate
+#trim : Cuts at the 3' end, trunc : Cuts at the 5' end
+#To decide where to trim and truncate observe the Interactive Quality Plot of paired-end-demux.qzv and observe where the quality score falls
+
 qiime dada2 denoise-paired \
 --i-demultiplexed-seqs paired-end-demux.qza \ #Ιnput file
 --p-trim-left-f 17 \ #Length of forward primer
@@ -50,12 +54,14 @@ qiime feature-table summarize \
 
 
 ##############################################TAXONOMIC ANALYSIS###################################################
+#In this step we will classify each Amplicon Sequence Variant (ASV) to the database entry that best matches it. 
+#In our case a classifier has already been trained for the V3-V4 region of the 16s rRNA gene using the SILVA database.
+#You have to create your own classifier.
 
 qiime feature-classifier classify-sklearn \ 
  --i-classifier classifier-16S-V3V4-99-silva-138.qza \ #Input classifier
  --i-reads /work_2/tsiogeo/dada2/rep_seqs.qza \ #Representative sequences
  --output-dir /work_2/tsiogeo/taxonomy #Where to save the output
-
 
 #Visualize  
  qiime metadata tabulate
@@ -88,13 +94,13 @@ qiime taxa barplot \
 
 
 ##############################################PHYLOGENETIC TREE############################################################ 
-
+#It will align the sequences, filter out those that cannot give me phylogenetic information, and build the phylogenetic tree. 
 qiime phylogeny align-to-tree-mafft-fasttree \ 
 --i-sequences /work_2/tsiogeo/dada2/rep_seqs.qza \ #sequences to align
- --o-alignment /work_2/tsiogeo/tree/aligned_16S_representative_seqs.qza \ #Perform the alignment
- --o-masked-alignment /work_2/tsiogeo/tree/masked_aligned_16S_representative_seqs.qza \ #Mask sites in the alignment that are not phylogenetically informative
+--o-alignment /work_2/tsiogeo/tree/aligned_16S_representative_seqs.qza \ #Perform the alignment
+--o-masked-alignment /work_2/tsiogeo/tree/masked_aligned_16S_representative_seqs.qza \ #Mask sites in the alignment that are not phylogenetically informative
 --o-tree /work_2/tsiogeo/tree/16S_unrooted_tree.qza \ #Generate phylogenetic tree
- --o-rooted-tree /work_2/tsiogeo/tree/16S_rooted_tree.qza #Apply mid-point rooting to the tree
+--o-rooted-tree /work_2/tsiogeo/tree/16S_rooted_tree.qza #Apply mid-point rooting to the tree
 
 
 ##############################################RAREFACTION CURVES############################################################ 
@@ -109,7 +115,7 @@ qiime diversity alpha-rarefaction \
 
 ##############################################DIVERSITY METRICS############################################################ 
 #To select the sampling depth, what we do is to open table.qzv and in the Interactive Sample Detail tab select a Sampling Depth that is as large as possible,
-#to keep more sequences per sample but at the same time exclude as much as few samples as possible
+#to keep more sequences per sample but at the same time exclude as much as few samples as possible. It is not required to calculate them, but after that we will jump in R and we are going to need them
 
 qiime diversity core-metrics-phylogenetic \
  --i-phylogeny /work_2/tsiogeo/tree/16S_rooted_tree.qza \ #Rooted tree

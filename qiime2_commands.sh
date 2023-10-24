@@ -115,7 +115,7 @@ qiime diversity alpha-rarefaction \
 
 ##############################################DIVERSITY METRICS############################################################ 
 #To select the sampling depth, what we do is to open table.qzv and in the Interactive Sample Detail tab select a Sampling Depth that is as large as possible,
-#to keep more sequences per sample but at the same time exclude as much as few samples as possible. It is not required to calculate them, but after that we will jump in R and we are going to need them
+#to keep more sequences per sample but at the same time exclude as much as few samples as possible. It is not required to calculate them, but you will need them if you want to make more visualizations with R
 
 qiime diversity core-metrics-phylogenetic \
  --i-phylogeny /work_2/tsiogeo/tree/16S_rooted_tree.qza \ #Rooted tree

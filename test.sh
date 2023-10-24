@@ -15,7 +15,7 @@ qiime demux summarize \
 
 #!Important! To be able to see paired-end-demux.qzv just drop this file here -> https://view.qiime2.org/
 
-# DADA2 tool 
+# DADA2 tool, depending on your data, choose your own lengths to trim and truncate
 qiime dada2 denoise-paired \
 --i-demultiplexed-seqs paired-end-demux.qza \ #Ιnput file
 --p-trim-left-f 17 \ #Length of forward primer
@@ -25,6 +25,24 @@ qiime dada2 denoise-paired \
 --o-table table.qza \ #Feature table
 --o-representative-sequences rep_seqs.qza \ #the sequences of the exact sequence variants (features); they are joined paired-end reads
 --o-denoising-stats denoising_stats.qza #summary of the denoising stats
+
+#Let's visualize the 3 outputs from DADA2 tool
+
+#Representative sequences
+qiime feature-table tabulate-seqs \ 
+--i-data rep_seqs.qza \ #Input file name
+--o-visualization rep_seqs.qzv #Output file name
+
+#Denoising stats
+qiime metadata tabulate \ 
+--m-input-file denoising_stats.qza \ #Input file name
+--o-visualization denoising_stats.qzv #Output file name
+
+#Feature table
+qiime feature-table summarize \ 
+--i-table table.qza \ #Input file name
+--o-visualization table.qzv #Output file name 
+
 
 
 

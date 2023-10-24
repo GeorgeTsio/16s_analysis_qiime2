@@ -1,4 +1,4 @@
-# 16s analysis with QIIME2 and some visualizations with R
+# 16s analysis with QIIME2
 
 Our fastq files are _paired-end_, _demultiplexed_ and have the type _PairedEndManifestPhred33V2_. Your fastq files can have **any** format, just change the 
 correspondig parameters at the input process. 
@@ -46,12 +46,6 @@ The **steps** for our analysis are:
 5. Rarefaction curves and calculation of Diversity metrics
 
 For more informations dive into code (_qiime2_commands.sh_) and **don't forget to read my comments (They are pretty helpful :) )**
-
-After finishing with qiime, check _visualizations_R.md_ for some cool visualizations by playing with R.
-
-
-
-
 
 
 

@@ -31,15 +31,18 @@ The **steps** for our analysis are:
 
 2. Use of DADA2 tool for:
      • Filtering
+   
      • Dereplication
+   
      • Chimera Identification
+   
      • Merging paired-end reads
    
-3. Taxonomic Analysis and some filtering
+4. Taxonomic Analysis and some filtering
 
-4. Phylogenetic tree
+5. Phylogenetic tree
 
-5. Rarefaction curves and calculation of Diversity metrics
+6. Rarefaction curves and calculation of Diversity metrics
 
 
 

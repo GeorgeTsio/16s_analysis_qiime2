@@ -2,7 +2,7 @@
 # a second column with the path in our PC that contains forward reads and a third column containing the path for reverse reads  
 
 #Import raw files into qiime, please check the format of manifest_data.txt
-#Depending on your own data you can change the sempantic type and/or the format of your files
+#Depending on your own data you can change the semantic type and/or the format of your files
 qiime tools import \
 --type 'SampleData[PairedEndSequencesWithQuality]' \ #Semantic type 
 --input-path manifest_data.txt\ #Data directory

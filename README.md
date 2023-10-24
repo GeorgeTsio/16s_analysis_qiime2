@@ -11,7 +11,6 @@ There are two fastq files for each sample in the study, each containing the forw
 The names of the files should include the following information:
 
 • Sample identifier
-
 • Barcode sequence or a barcode identifier
 
 • Lane number 

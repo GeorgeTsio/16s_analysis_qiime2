@@ -30,6 +30,7 @@ The **steps** for our analysis are:
 1. Import raw files into Qiime2
 
 2. Use of DADA2 tool for:
+   
      • Filtering
    
      • Dereplication
@@ -38,11 +39,11 @@ The **steps** for our analysis are:
    
      • Merging paired-end reads
    
-4. Taxonomic Analysis and some filtering
+3. Taxonomic Analysis and some filtering
 
-5. Phylogenetic tree
+4. Phylogenetic tree
 
-6. Rarefaction curves and calculation of Diversity metrics
+5. Rarefaction curves and calculation of Diversity metrics
 
 
 

@@ -5,7 +5,7 @@ correspondig parameters at the input process.
 Due to company confidentiality I can't provide you the fastq files, but I am going to explain everything you need to run your own analysis!
 
 
-### ABOUT FASTQ FILES:
+### About FASTQ Files:
 
 There are two fastq files for each sample in the study, each containing the forward or reverse reads for the sample, respectively. 
 The names of the files should include the following information (**For PairedEndManifestPhred33V2**):

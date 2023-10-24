@@ -1,1 +1,1 @@
-### 16 analysis with QIIME2
+### 16s analysis with QIIME2

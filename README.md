@@ -45,6 +45,8 @@ The **steps** for our analysis are:
 
 5. Rarefaction curves and calculation of Diversity metrics
 
+For more informations dive into code (_qiime2_commands.sh_) and **don't forget to read my comments (They are pretty helpful :) )**
+
 
 
 

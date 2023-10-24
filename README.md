@@ -18,8 +18,8 @@ The names of the files should include the following information (**For PairedEnd
 
 • Direction of the read:
 
-    - R1 = Forward read
-    - R2 = Reverse read
+      R1 = Forward read
+      R2 = Reverse read
     
 • Set number
 
